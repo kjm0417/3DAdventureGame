@@ -29,11 +29,12 @@ public class CharacterManager : MonoBehaviour
     }
 
 
-    void Start()
+    void Awake()
     {
         if(instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
