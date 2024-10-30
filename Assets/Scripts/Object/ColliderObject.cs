@@ -9,11 +9,9 @@ public interface ICollidable
 
 public class ColliderObject : MonoBehaviour
 {
-
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        ICollidable collidable = collision.gameObject.GetComponent<ICollidable>();
+        ICollidable collidable = other.gameObject.GetComponent<ICollidable>();
         if (collidable != null)
         {
             collidable.OnPlayerCollision();
