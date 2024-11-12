@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 mouseDelta;
 
     public Rigidbody rb;
+        
     
 
     void Start()
@@ -99,5 +100,32 @@ public class PlayerController : MonoBehaviour
 
         return false;
     }
+
+    public void OnWeqponChange(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            int weaponNumber = (int)context.ReadValue<float>();
+        }
+    }
+    private void HandleWeaponInput(int weaponNumber)
+    {
+        switch (weaponNumber)
+        {
+            case 1:
+                _attackManager.SetAttackStrategy(new GunAttack());
+                break;
+            case 2:
+                _attackManager.SetAttackStrategy(new ThrowAttack());
+                break;
+            case 3:
+                _attackManager.SetAttackStrategy(new CircularMagicAttack());
+                break;
+            default:
+                Debug.Log("Invalid weapon number");
+                break;
+        }
+    }
+
 
 }
